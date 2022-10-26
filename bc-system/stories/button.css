@@ -2,14 +2,39 @@
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
   border: 0;
-  border-radius: 3em;
+  border-radius: 0;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   line-height: 1;
+  transition: all 0.3s ease-in-out;
+  height: 50px;
+  
+}
+.active { color: #002043;}
+.desaible { opacity: 0.5; }
+
+.withIcon {
+  width: 20px;
+  height: 20px;
+  background: url(../public/plus-icon.svg) no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 0.3rem;
+}
+.withoutIcon {
+  display: none;
 }
 .storybook-button--primary {
   color: white;
-  background-color: #1ea7fd;
+  background-color: #E22944;
+}
+.storybook-button--primary:hover {
+  background-color: #B02035;
 }
 .storybook-button--secondary {
   color: #333;
@@ -22,7 +47,7 @@
 }
 .storybook-button--medium {
   font-size: 14px;
-  padding: 11px 20px;
+  padding: 0.8rem 1rem;
 }
 .storybook-button--large {
   font-size: 16px;

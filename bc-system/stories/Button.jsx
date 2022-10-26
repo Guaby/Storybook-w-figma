@@ -2,49 +2,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './button.css';
 
+
+function strech(e) {
+  e.target.style.padding = '0.8rem 1.3rem'
+}
+function shrink(e) {
+  e.target.style.padding = '0.8rem 1rem'
+}
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button = ({ primary, backgroundColor, size, label, isactive, isdesaible, icon, ...props }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const iconMode = icon ? 'withIcon' : 'withoutIcon';
+  const activeMode = isactive ? 'active' : '';
+  const desaibleMode = isdesaible ? 'desaible': ''
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={['storybook-button', `storybook-button--${size}`, mode, activeMode, desaibleMode].join(' ')}
       style={backgroundColor && { backgroundColor }}
+      onMouseOver={strech}
+      onMouseLeave={shrink}
       {...props}
     >
+      <span className={['withIcon', iconMode].join(' ')}/>
       {label}
     </button>
   );
 };
 
 Button.propTypes = {
-  /**
-   * Is this the principal call to action on the page?
-   */
   primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
   backgroundColor: PropTypes.string,
-  /**
-   * How large should the button be?
-   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Button contents
-   */
   label: PropTypes.string.isRequired,
-  /**
-   * Optional click handler
-   */
+  icon: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
-  primary: false,
+  backgroundColor: '#E22944;',
+  primary: true,
+  icon: false,
   size: 'medium',
   onClick: undefined,
 };
